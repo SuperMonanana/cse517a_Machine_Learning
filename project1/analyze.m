@@ -11,10 +11,10 @@ function output=analyze(kind,truth,preds)
 switch kind
 	case 'abs'
 		% compute the absolute difference between truth and predictions
-		%fill in the code here
+		output=sum(abs(preds-truth))/length(truth);
 		
 	case 'acc' 
-		%% fill in code here
+		output=length(find(preds-truth==0))/length(truth);
 		 	
 end;
 
