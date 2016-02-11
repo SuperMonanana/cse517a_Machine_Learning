@@ -17,11 +17,25 @@ function D=l2distance(X,Z)
 %
 
 if (nargin==1) % case when there is only one input (X)
-	%% fill in code here
+    n=size(X,2);
+    S1=X'*X;
+    S2=diag(S1);
+    S=repmat(S2,1,n);
+    G=innerproduct(X);
+    D=sqrt(S+S'-2*G);
+    
 
 else  % case when there are two inputs (X,Z)
-	%% fill in code here
-
+	n=size(X,2);m=size(Z,2);
+    S1=X'*X;
+    S2=diag(S1);
+    S=repmat(S2,1,m);
+    R1=Z'*Z;
+    R2=diag(R1);
+    R3=R2';
+    R=repmat(R3,n,1);
+    G=innerproduct(X,Z);
+    D=sqrt(S+R-2*G);
 end;
 %
 

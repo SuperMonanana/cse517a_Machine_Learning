@@ -14,14 +14,22 @@ function [indices,dists]=findknn(xTr,xTe,k);
 %
 
 % output random results, please erase this code
-[d,ntr]=size(xTr);
-[d,nte]=size(xTe);
-indices=ceil(rand(k,nte)*ntr);
-dists=rand(k,nte);
-if k>ntr,k=ntr;end;
+% [d,ntr]=size(xTr);
+% [d,nte]=size(xTe);
+% indices=ceil(rand(k,nte)*ntr);%k rows, nte columns
+% dists=rand(k,nte);
+% if k>ntr,k=ntr;end;
 
 %% fill in code here
-	
-	
+[d,ntr]=size(xTr);
+[d,nte]=size(xTe);
+
+
+alldists=l2distance(xTr,xTe);
+[sortedDists,sortedIndices]=sort(alldists);
+indices=sortedIndices(1:k,:);
+dists=sortedDists(1:k,:);
+
+end
 %%	%
 	
