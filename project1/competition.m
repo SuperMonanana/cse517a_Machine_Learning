@@ -19,5 +19,5 @@ function preds=competition(xTr,yTr,xTe);
 % preds=randi(length(un),1,n);
 
 %fill in the code here
-[d n]=size(xTr);k=round(rand*n);
-preds=knnclassifier(xTr,yTr,xTe,k);
+
+preds=knnclassifier(xTr,yTr,xTe,5);
