@@ -22,8 +22,7 @@ function preds=competition(xTr,yTr,xTe);
 n=size(xTr,2);
 if n<1000
     k=1;
-end
-if n>=1000 && n<10000
+elseif n>=1000 && n<10000
         k=3;
 else
     k=5;
