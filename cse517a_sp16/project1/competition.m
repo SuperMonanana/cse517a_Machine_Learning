@@ -19,5 +19,13 @@ function preds=competition(xTr,yTr,xTe);
 % preds=randi(length(un),1,n);
 
 %fill in the code here
-
-preds=knnclassifier(xTr,yTr,xTe,5);
+k=5;
+preds=knnclassifier(xTr,yTr,xTe,k);preds2=knnclassifier(xTr,yTr,xTe,k);
+accuracy=analyze('acc',truth,preds);accuracy2=analyze('acc',truth,preds2);
+while accuracy<accuracy2 & k~=1
+    k=k-1;
+    preds=preds2;
+    preds2=knnclassifier(xTr,yTr,xTe,k);
+end
+   
+    
