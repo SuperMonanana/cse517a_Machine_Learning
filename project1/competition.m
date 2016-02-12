@@ -14,9 +14,10 @@ function preds=competition(xTr,yTr,xTe);
 %
 
 % The random classifier is awesome!!! Could you possibly do better?
-un=unique(yTr);
-[d,n]=size(xTe);
-preds=randi(length(un),1,n);
+% un=unique(yTr);
+% [d,n]=size(xTe);
+% preds=randi(length(un),1,n);
 
 %fill in the code here
-
+[d n]=size(xTr);k=rand*n;
+preds=knnclassifier(xTr,yTr,xTe,k)
