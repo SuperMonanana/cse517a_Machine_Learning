@@ -14,5 +14,18 @@ function w=perceptron(x,y);
 w=zeros(d,1);
 
 %% fill in code here
+for j=1:100
+    index=randperm(n);
+    m=0;
+    for i=1:n      
+        if y(index(i))*w'*x(:,index(i))<=0
+            w = perceptronUpdate(x(:,index(i)),y(index(i)),w);
+            m=m+1;
+        end        
+    end
+    if m==0
+        break
+    end
+end
 
 
