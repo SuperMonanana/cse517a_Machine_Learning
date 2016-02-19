@@ -16,6 +16,7 @@ if nargin<3,
 	b=0;
 end;
 
-%% fill in code here
-
+%% fill in code here 
+preds=sign(w'*x+b);
+    
 
