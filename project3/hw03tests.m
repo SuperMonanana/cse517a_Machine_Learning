@@ -97,19 +97,25 @@ else,
 end;
 
 
-
-
-
-
-[poscond, negcond] = naivebayes(x,y,[1;1]);
-poscond0 = -2.1972;
-negcond0 = -2.1972;
-if (norm(poscond - poscond0) > 1e-03) or (norm(negcond - negcond0) > 1e-03),
+[logratio] = naivebayes(x,y,[1;1]);
+if (logratio > 1e-08),
     r = r+1;
-    s{length(s)+1}='The calculation of log P(Y|X) seems incorrect.'
+    s{length(s)+1}='The calculation of log P(Y=1|X)/P(Y=-1|X) seems incorrect.'
 else,
     ok=ok+1;
 end;
+
+
+% % This does not work!
+% [poscond, negcond] = naivebayes(x,y,[1;1]);
+% poscond0 = -2.1972;
+% negcond0 = -2.1972;
+% if (norm(poscond - poscond0) > 1e-03) or (norm(negcond - negcond0) > 1e-03),
+%     r = r+1;
+%     s{length(s)+1}='The calculation of log P(X|Y)P(Y) seems incorrect.'
+% else,
+%     ok=ok+1;
+% end;
 
 w=naivebayesCL(x,y);
 w0=[0.69315;-0.69315];
