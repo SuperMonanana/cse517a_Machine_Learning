@@ -18,4 +18,13 @@ y=[y -1 1];
 
 [d,n] = size(x);
 %% fill in code here
+indexpos=find(y==1);
+posprob=x(:,indexpos)/sum(x(:,indexpos));
+
+indexneg=find(y==-1);
+negprob=x(:,indexneg)/sum(x(:,indexneg));
+
+
+
+
 

@@ -1,4 +1,4 @@
-function [poscond, negcond] = naivebayes(x,y,x1)
+function logratio = naivebayes(x,y,x1)
 % function possi = naivebayes(x,y);
 %
 % Computation of log P(Y|X=x1) using Bayes Rule
@@ -14,4 +14,8 @@ function [poscond, negcond] = naivebayes(x,y,x1)
 
 [d,n] = size(x);
 %% fill in code here
-
+[posprob,negprob] = naivebayesPXY(x,y);
+[pos,neg] = naivebayesPY(x,y);
+poscond = sum(log(posprob.^x1)) + log(pos);
+negcond = sum(log(negprob.^x1)) + log(neg);
+logratio=poscond/negcond
