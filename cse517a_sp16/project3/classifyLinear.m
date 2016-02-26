@@ -13,4 +13,9 @@ function preds = classifyLinear(x,w,b);
 
 %% fill in code here
 
+if nargin<3,
+	b=0;
+end;
 
+
+preds=sign(w'*x+b);

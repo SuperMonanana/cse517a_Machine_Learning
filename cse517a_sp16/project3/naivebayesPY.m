@@ -12,9 +12,10 @@ function [pos,neg] = naivebayesPY(x,y)
 %
 
 % add one all-ones positive and negative example
-x=[x ones(size(x,1),2)];
-y=[y -1 1];
+% x=[x ones(size(x,1),2)];
+% y=[y -1 1];
 
 [d,n] = size(x);
 %% fill in code here
-
+pos=length(find(y==1))/n;
+neg=length(find(y==-1))/n;
