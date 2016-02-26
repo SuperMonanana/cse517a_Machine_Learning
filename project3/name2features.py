@@ -2,7 +2,7 @@
 import sys
 
 def hashfeatures(name):
-  B=128; # number of dimensions in our feature space
+  B=256; # number of dimensions in our feature space
   v=[0]*B; # initialize the vector to be all-zeros
   name=name.lower() # make all letters lower case
   # hash prefixes & suffixes
