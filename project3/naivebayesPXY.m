@@ -19,10 +19,10 @@ y=[y -1 1];
 [d,n] = size(x);
 %% fill in code here
 indexpos=find(y==1);
-posprob=x(:,indexpos)/sum(x(:,indexpos));
+posprob=sum(x(:,indexpos),2)/sum(sum(x(:,indexpos),2));
 
 indexneg=find(y==-1);
-negprob=x(:,indexneg)/sum(x(:,indexneg));
+negprob=sum(x(:,indexneg),2)/sum(sum(x(:,indexneg),2));
 
 
 
