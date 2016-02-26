@@ -49,7 +49,7 @@ end;
 [pospossi,negpossi] = naivebayesPXY(x,y);
 pospossi0 = [0.66667;0.33333];
 negpossi0 = [0.33333;0.66667];
-if (norm(pospossi - pospossi0) > 1e-03) or (norm(negpossi - negpossi0) > 1e-03),
+if (norm(pospossi - pospossi0) > 1e-03) || (norm(negpossi - negpossi0) > 1e-03),
     r = r+1;
     s{length(s)+1}='The calculation of P(X|Y) seems incorrect.'
 else,
