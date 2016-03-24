@@ -12,7 +12,7 @@ path=sys.argv[1];
 if len(sys.argv)>1:
 	HASHBUCKETS=2**int(sys.argv[2]);
 else:
-	HASHBUCKETS=2**11;
+	HASHBUCKETS=2**10;
 	
 ind=[x.split() for x in open(path+'/index').read().split('\n') if len(x)>0]; # read in index file
 codebook={}
