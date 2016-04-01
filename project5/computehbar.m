@@ -21,7 +21,9 @@ global Nsmall NMODELS OFFSET
 hbar=zeros(1,n);
 
 for j=1:NMODELS
-
+    [xTr,yTr]=toydata(OFFSET,Nsmall);
+    fun= kregression(xTr,yTr,sigma,lambda);  
+    hbar =hbar + fun(xTe); 
 end;
 hbar=hbar./NMODELS;
 
