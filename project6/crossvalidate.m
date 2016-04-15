@@ -63,7 +63,7 @@ k=5;
     
 %% Identify best setting
 % YOUR CODE
-    bestval =min(min(allvalerrs));
+    bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
     bestC=Cs(BestCii(1+floor(length(BestCii)*rand)));
     bestP=paras(BestPjj(1+floor(length(BestPjj)*rand)));
