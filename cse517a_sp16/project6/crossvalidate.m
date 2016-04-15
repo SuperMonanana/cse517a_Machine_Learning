@@ -34,7 +34,7 @@ paras_length = length(paras);
 err=[];
 allvalerrs=[];
 
-k=7;
+k=5;
 
 %% Split off validation data set
 % YOUR CODE
@@ -66,7 +66,7 @@ k=7;
     bestval =min(min(allvalerrs));
     [BestC,BestP] = find(allvalerrs==bestval);
     bestC=Cs(BestC(1+floor(length(BestC)*rand)));
-    bestP=Cs(BestP(1+floor(length(BestP)*rand)));
+    bestP=paras(BestP(1+floor(length(BestP)*rand)));
 
 end
 
