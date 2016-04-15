@@ -24,27 +24,33 @@ n=length(yTr);
 
 disp('Generating Kernel ...')
 % 
-% YOUR CODE
+K = computeK(ktype, xTr, xTr, kpar);
 %
 disp('Solving QP ...')
 %
-% YOUR CODE 
+[H,q,Aeq,beq,lb,ub]=generateQP(K,yTr',C);
+%X0=zeors(n,1);
+[alphas, OBJ, INFO, LAMBDA] = quadprog (H, q,[],[],Aeq,beq,lb, ub);
+%it seems the X0 is useless,because of the "interior-point-convex' algorithm
 %
 disp('Recovering bias')
 %
 % YOUR CODE 
+bias = recoverBias(K, yTr', alphas, C);
 %
 disp('Extracting support vectors ...')
 %
 % YOUR CODE 
-%
+sv_i=find(alphas>0&alphas<C);
+
 disp('Creating classifier ...')
 %
 % YOUR CODE 
-%
+svmclassify = @(xTe) computeK(ktype, xTe, xTr, kpar)*(yTr.* alphas)+bias; 
+
 disp('Computing training error:') % this is optional, but interesting to see
 %
 % YOUR CODE 
-%
+disp(sum(sign(svmclassify(xTr))~=yTr)./length(yTr));
 
 
