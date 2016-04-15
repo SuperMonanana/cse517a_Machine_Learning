@@ -3,7 +3,7 @@ function bias=recoverBias(K,yTr,alphas,C);
 %
 % INPUT:	
 % K : nxn kernel matrix
-% yTr : 1xn input labels
+% yTr : n*1 input labels
 % alphas  : nx1 vector or alpha values
 % C : regularization constant
 % 

@@ -36,7 +36,7 @@ disp('Solving QP ...')
 disp('Recovering bias')
 %
 % YOUR CODE 
-bias = recoverBias(K, yTr', alphas, C);
+bias = recoverBias(K, yTr, alphas, C);
 %
 disp('Extracting support vectors ...')
 %
