@@ -184,7 +184,7 @@ X = rand(20,100);
 w = rand(20,1);
 b = - mean(X'*w);
 y = sign(X'*w+b)';
-[svmclassify,sv_i,alpha]=trainsvm(X,y,10,'linear',1);
+[svmclassify,sv_i,alpha]=trainsvm(X,y',10,'linear',1);
 
 try
 	failtest=(sum(sign(svmclassify(X))~=y(:))./length(y)>0.1);
@@ -247,7 +247,7 @@ K =[
    1.31246   1.55994   2.12079   1.06140   1.18423;
    0.77229   1.64305   1.06140   1.77547   0.87014;
    0.64781   1.03909   1.18423   0.87014   0.82340];
-y =[-1;1; 1; 1; -1];
+y =[-1;1; 1; 1; -1]';
 alpha =[4.98878; 0.00000 ; 7.35341; 4.23333; 6.59796];
 bias = recoverBias(K,y',alpha,10);
 try
