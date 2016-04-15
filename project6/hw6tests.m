@@ -75,7 +75,7 @@ end;
 
 % Test polynomial kernel
 try
-	failtest=~all(all(computeK('poly',X,Z,1)-1==computeK('linear',X,Z,1)));
+	failtest=~all(all(computeK('polynomial',X,Z,1)-1==computeK('linear',X,Z,1)));
     addon='';
 catch
 	failtest=true;
@@ -90,7 +90,7 @@ end;
 
 
 try
-	failtest=~all(all(computeK('poly',X,Z,3)==(computeK('linear',X,Z,1)+1).^3));
+	failtest=~all(all(computeK('polynomial',X,Z,3)==(computeK('linear',X,Z,1)+1).^3));
     addon='';
 catch
 	failtest=true;
@@ -247,7 +247,7 @@ K =[
    1.31246   1.55994   2.12079   1.06140   1.18423;
    0.77229   1.64305   1.06140   1.77547   0.87014;
    0.64781   1.03909   1.18423   0.87014   0.82340];
-y =[-1;1; 1; 1; -1]';
+y =[-1;1; 1; 1; -1];
 alpha =[4.98878; 0.00000 ; 7.35341; 4.23333; 6.59796];
 bias = recoverBias(K,y',alpha,10);
 try
