@@ -17,7 +17,7 @@ function [svmclassify,sv_i,alphas]=trainsvm(xTr,yTr, C,ktype,kpar);
 
 if nargin<5,kpar=1;end;
 yTr=yTr(:);
-svmclassify=@(xTe) (rand(1,size(xTe,2))>0.5).*2-1; %% classify everything randomly
+%svmclassify=@(xTe) (rand(1,size(xTe,2))>0.5).*2-1; %% classify everything randomly
 n=length(yTr);
 
 

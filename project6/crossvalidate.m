@@ -65,8 +65,8 @@ k=5;
 % YOUR CODE
     bestval = min(allvalerrs(:));
     [BestC,BestP] = find(allvalerrs==bestval);
-    bestC=Cs(BestC(1));
-    bestP=Cs(BestP(1));
+    bestC=Cs(BestC(1+floor(length(BestC)*rand)));
+    bestP=Cs(BestP(1+floor(length(BestP)*rand)));
 
 end
 
