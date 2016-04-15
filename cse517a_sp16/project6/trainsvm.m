@@ -33,7 +33,9 @@ x0=zeros(n,1);
 options=optimoptions(@quadprog,'Algorithm','active-set')
 [alphas, OBJ, INFO, LAMBDA] = quadprog (H, q,Aeq.*0,beq.*0,Aeq,beq,lb, ub,x0,options);
 %it seems the X0 is useless,because of the "interior-point-convex' algorithm
+
 %
+alphas(alphas<0)=0;
 disp('Recovering bias')
 %
 % YOUR CODE 
@@ -42,7 +44,7 @@ bias = recoverBias(K, yTr, alphas, C);
 disp('Extracting support vectors ...')
 %
 % YOUR CODE 
-sv_i=find(alphas>0&alphas<C);
+sv_i=find(alphas>0.0001&alphas<C);
 
 disp('Creating classifier ...')
 %
