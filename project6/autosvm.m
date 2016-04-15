@@ -11,8 +11,10 @@ function svmclassify=autosvm(xTr,yTr)
 % Performs cross validation to train an SVM with optimal hyper-parameters on xTr,yTr
 %
 disp('Performing cross validation ...');
-[bestC,bestP]=crossvalidate(xTr,yTr,'rbf',2.^[-1:8],2.^[-2:3]);
-[bestC,bestP]=crossvalidate(xTr, yTr, 'rbf', [bestC-3:bestC+3], [bestP-3:bestP+3]);
+
+ktype='rbf'
+[bestC,bestP]=crossvalidate(xTr,yTr,ktype,2.^[-1:8],2.^[-2:3]);
+
 disp('Training SVM ...');
-svmclassify=trainsvm(xTr,yTr,bestC,'rbf',bestP);
+svmclassify=trainsvm(xTr,yTr,bestC,ktype,bestP);
 
