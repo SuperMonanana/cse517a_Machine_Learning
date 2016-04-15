@@ -17,5 +17,5 @@ ktype='rbf'
 
 
 disp('Training SVM ...');
-svmclassify=trainsvm(xTr,yTr,256,ktype,4);
+svmclassify=trainsvm(xTr,yTr,127,ktype,1);
 
