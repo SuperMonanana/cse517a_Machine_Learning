@@ -14,8 +14,6 @@ disp('Performing cross validation ...');
 
 ktype='rbf'
 [bestC,bestP]=crossvalidate(xTr,yTr,ktype,2.^[-1:8],2.^[-2:3]);
-[bestC,bestP]=crossvalidate(xTr,yTr,ktype,[bestC/2:bestC*2],[bestP/2:bestP*2]);
-
 
 disp('Training SVM ...');
 svmclassify=trainsvm(xTr,yTr,bestC,ktype,bestP);
