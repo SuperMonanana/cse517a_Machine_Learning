@@ -14,9 +14,9 @@ function K = computeK(kernel_type, X, Z, param)
 %
 %
 
-if nargin<2,
-	Z=X;
-end;
+% if nargin<2,
+% 	Z=X;
+% end;
 
 %%YOUR CODE HERE
 if strcmp(kernel_type,'linear')

@@ -16,7 +16,7 @@ function bias=recoverBias(K,yTr,alphas,C);
 
 
 % YOUR CODE 
-
+yTr=yTr';
 %if C>alphai>0, solve the equation for b
 index=find(alphas>0&alphas<C);
 Bias = 1 ./ yTr(index) - (yTr .* (alphas')*K(:,index));
