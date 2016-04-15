@@ -31,7 +31,6 @@ function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras)
 % paras=2.^[-5:5];
 Cs_length = length(Cs);
 paras_length = length(paras);
-err=[];
 allvalerrs=[];
 
 k=5;
@@ -45,6 +44,7 @@ k=5;
 % YOUR CODE
   for ii=1:Cs_length
 	for jj=1:paras_length
+        err=zeros(1,k);
         for j=1:k
             start=1+floor((j-1)*n/k);
             xVal=xTr(:,start:start+floor(n/k)-1);
