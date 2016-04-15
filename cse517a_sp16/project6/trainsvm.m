@@ -29,8 +29,9 @@ K = computeK(ktype, xTr, xTr, kpar);
 disp('Solving QP ...')
 %
 [H,q,Aeq,beq,lb,ub]=generateQP(K,yTr',C);
-%X0=zeors(n,1);
-[alphas, OBJ, INFO, LAMBDA] = quadprog (H, q,[],[],Aeq,beq,lb, ub);
+x0=zeros(n,1);
+options=optimoptions(@quadprog,'Algorithm','active-set')
+[alphas, OBJ, INFO, LAMBDA] = quadprog (H, q,Aeq.*0,beq.*0,Aeq,beq,lb, ub,x0,options);
 %it seems the X0 is useless,because of the "interior-point-convex' algorithm
 %
 disp('Recovering bias')
