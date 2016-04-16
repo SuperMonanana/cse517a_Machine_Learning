@@ -19,7 +19,7 @@ kernel='rbf';
 % Cs = 2.^[(newC - 1) : 0.5 : (newC + 1)];
 % paras = 2.^[(newP - 0.75): 0.25 : (newP + 0.75)]; 
 
-[bestC,bestP] = crossvalidate(xTr,yTr,'rbf',Cs,paras);
+%[bestC,bestP] = crossvalidate(xTr,yTr,'rbf',Cs,paras);
 
 %[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC,bestP);
 %[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC-3:1:bestC+3,bestP-2:0.5:bestP+2);
