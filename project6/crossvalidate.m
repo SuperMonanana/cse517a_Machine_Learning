@@ -44,7 +44,7 @@ k=5;
 % YOUR CODE
   for ii=1:Cs_length
 	for jj=1:paras_length
-        %err=zeros(1,k);
+        err=zeros(1,k);
         for j=1:k
             start=1+floor((j-1)*n/k);
             xVal=xTr(:,start:start+floor(n/k)-1);
@@ -65,8 +65,8 @@ k=5;
 % YOUR CODE
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
-    bestC=Cs(BestCii(1));
-    bestP=paras(BestPjj(1));
+    bestC=BestCii(1);
+    bestP=BestPjj(1);
 %     bestC=Cs(BestCii(unidrnd(length(BestCii))));
 %     bestP=paras(BestPjj(unidrnd(length(BestPjj))));
 
