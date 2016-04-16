@@ -14,12 +14,12 @@ disp('Performing cross validation ...');
 
 kernel='rbf';
 [bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,kernel,2.^[-1:5],2.^[-2:2]);
-% newC = log2(bestC);
-% newP = log2(bestP);
-% Cs = 2.^[(newC - 1) : 0.5 : (newC + 1)];
-% paras = 2.^[(newP - 0.75): 0.25 : (newP + 0.75)]; 
+newC = log2(bestC);
+newP = log2(bestP);
+Cs = 2.^[(newC - 1) : 0.5 : (newC + 1)];
+paras = 2.^[(newP - 0.75): 0.25 : (newP + 0.75)]; 
 
-%[bestC,bestP] = crossvalidate(xTr,yTr,'rbf',Cs,paras);
+[bestC,bestP] = crossvalidate(xTr,yTr,'rbf',Cs,paras);
 
 %[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC,bestP);
 %[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC-3:1:bestC+3,bestP-2:0.5:bestP+2);
