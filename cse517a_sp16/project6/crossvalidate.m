@@ -33,7 +33,7 @@ Cs_length = length(Cs);
 paras_length = length(paras);
 allvalerrs=[];
 
-k=3;
+k=5;
 
 %% Split off validation data set
 % YOUR CODE
