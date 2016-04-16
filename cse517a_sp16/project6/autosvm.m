@@ -14,6 +14,8 @@ disp('Performing cross validation ...');
 
 
 [bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',2.^[-1:5],2.^[-2:2]);
+
+%[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC,bestP);
 [bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC-3:1:bestC+3,bestP-2:0.5:bestP+2);
 
 
