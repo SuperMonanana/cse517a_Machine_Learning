@@ -13,9 +13,9 @@ function svmclassify=autosvm(xTr,yTr)
 disp('Performing cross validation ...');
 
 
-%[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',2.^[-1:8],2.^[-2:3]);
+[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',2.^[-1:8],2.^[-2:3]);
 
 
 disp('Training SVM ...');
-svmclassify=trainsvm(xTr,yTr, 256,'rbf',4);
+svmclassify=trainsvm(xTr,yTr, bestC,'rbf',bestP);
 
