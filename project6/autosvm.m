@@ -13,16 +13,14 @@ function svmclassify=autosvm(xTr,yTr)
 disp('Performing cross validation ...');
 
 kernel='rbf';
-% [bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,kernel,2.^[-1:5],2.^[-2:2]);
-% newC = log2(bestC);
-% newP = log2(bestP);
-% Cs = 2.^[(newC - 1) : 0.5 : (newC + 1)];
-% paras = 2.^[(newP - 0.75): 0.25 : (newP + 0.75)]; 
+[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,kernel,2.^[-1:5],2.^[-2:2]);
+
+
 % 
 % [bestC,bestP] = crossvalidate(xTr,yTr,kernel,Cs,paras);
 
 %[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC,bestP);
-%[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC-3:1:bestC+3,bestP-2:0.5:bestP+2);
+[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC-3:0.5:bestC+3,bestP-1:0.25:bestP+1);
 
 
 disp('Training SVM ...');
