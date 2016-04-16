@@ -14,11 +14,11 @@ disp('Performing cross validation ...');
 
 
 [bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',2.^[-1:8],2.^[-2:3]);
-[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',2.^[bestC-3:0.4:bestC+3],2.^[bestP-1:0.25:bestP+1]);
+%[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',2.^[bestC-3:0.5:bestC+3],2.^[bestP-1:0.25:bestP+1]);
 % 
  bestC=2^bestC;
  bestP=2^bestP;
 
 disp('Training SVM ...');
-svmclassify=trainsvm(xTr,yTr, 127,'rbf',1);
+svmclassify=trainsvm(xTr,yTr, bestC,'rbf',bestP);
 
