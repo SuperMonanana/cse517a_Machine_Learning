@@ -14,6 +14,7 @@ disp('Performing cross validation ...');
 
 
 [bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',2.^[-1:8],2.^[-2:3]);
+[bestC,bestP,bestval,allerrs]=crossvalidate(xTr,yTr,'rbf',bestC-3:1:bestC+3,bestP-2:0.5:bestP+2);
 
 
 disp('Training SVM ...');
