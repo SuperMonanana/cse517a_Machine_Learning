@@ -65,10 +65,10 @@ k=5;
 % YOUR CODE
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
-%     bestC=Cs(BestCii(1));
-%     bestP=paras(BestPjj(1));
-    bestC=Cs(BestCii(unidrnd(length(BestCii))));
-    bestP=paras(BestPjj(unidrnd(length(BestPjj))));
+    bestC=Cs(BestCii(1));
+    bestP=paras(BestPjj(1));
+%     bestC=Cs(BestCii(unidrnd(length(BestCii))));
+%     bestP=paras(BestPjj(unidrnd(length(BestPjj))));
 
 end
 
