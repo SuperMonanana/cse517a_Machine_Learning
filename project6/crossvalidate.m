@@ -66,7 +66,7 @@ k=3;
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
     bestC=Cs(BestCii(1));
-    bestP=paras(BestPii(1));
+    bestP=paras(BestPjj(1));
     %bestC=Cs(BestCii(1+floor(length(BestCii)*rand)));
     %bestP=paras(BestPjj(1+floor(length(BestPjj)*rand)));
 
