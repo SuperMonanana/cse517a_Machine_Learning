@@ -1,4 +1,4 @@
-function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras,k)
+function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras)
 % function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras)
 %
 % INPUT:	
@@ -32,7 +32,7 @@ function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras,k
 Cs_length = length(Cs);
 paras_length = length(paras);
 allvalerrs=[];
-
+k=5;
 
 
 %% Split off validation data set
