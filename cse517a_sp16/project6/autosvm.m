@@ -17,5 +17,5 @@ disp('Performing cross validation ...');
 
 
 disp('Training SVM ...');
-svmclassify=trainsvm(xTr,yTr, 127,'rbf',1);
+svmclassify=trainsvm(xTr,yTr, bestC,'rbf',bestP);
 
