@@ -31,8 +31,8 @@ function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras)
 % paras=2.^[-5:5];
 Cs_length = length(Cs);
 paras_length = length(paras);
-allvalerrs=[];
-k=5;
+allvalerrs=zeros(Cs_length,paras_length);
+k=9;
 
 
 %% Split off validation data set
@@ -42,31 +42,31 @@ k=5;
     % Y=mat2cell(yTr,1,n/k*ones(1,k));
 %% Evaluate all parameter settings
 % YOUR CODE
-  for ii=1:Cs_length
-	for jj=1:paras_length
-        err=zeros(1,k);
-        for j=1:k
-            start=1+floor((j-1)*n/k);
+for j=1:k 
+     start=1+floor((j-1)*n/k);
             xVal=xTr(:,start:start+floor(n/k)-1);
             yVal=yTr(1,start:start+floor(n/k)-1);
             xTrain=xTr;
             yTrain=yTr;
             xTrain(:,start:start+floor(n/k)-1)=[];
             yTrain(:,start:start+floor(n/k)-1)=[];
+    
+    for ii=1:Cs_length
+        for jj=1:paras_length
             svmclassify=trainsvm(xTrain,yTrain,Cs(ii), ktype, paras(jj));
-            err(j)=sum(sign(svmclassify(xVal))~=yVal(:))/length(yVal);
+            err=sum(sign(svmclassify(xVal))~=yVal(:))/length(yVal);
+            allvalerrs(ii,jj)=allvalerrs(ii,jj)+err;
         end
-		allvalerrs(ii,jj)=mean(err);
-    end
-  end
-  
+     end
+end 
     
 %% Identify best setting
 % YOUR CODE
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
-    bestC=Cs(BestCii(1));
-    bestP=paras(BestPjj(1));
+    a=length(BestCii);
+    bestC=Cs(BestCii(a));
+    bestP=paras(BestPjj(a));
 %     bestC=Cs(BestCii(unidrnd(length(BestCii))));
 %     bestP=paras(BestPjj(unidrnd(length(BestPjj))));
 
