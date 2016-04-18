@@ -38,18 +38,22 @@ k=10;
 %% Split off validation data set
 % YOUR CODE
 
-    % X=mat2cell(xTr,d,n/k*ones(1,k));
-    % Y=mat2cell(yTr,1,n/k*ones(1,k));
+    X=mat2cell(xTr,d,n/k*ones(1,k));
+    Y=mat2cell(yTr,1,n/k*ones(1,k));
 %% Evaluate all parameter settings
 % YOUR CODE
-for j=1:k 
-     start=1+floor((j-1)*n/k);
-            xVal=xTr(:,start:start+floor(n/k)-1);
-            yVal=yTr(1,start:start+floor(n/k)-1);
-            xTrain=xTr;
-            yTrain=yTr;
-            xTrain(:,start:start+floor(n/k)-1)=[];
-            yTrain(:,start:start+floor(n/k)-1)=[];
+xVal=X{k};
+yVal=Y{k};
+for j=1:k-1 
+    xTrain=X{j};
+    yTrain=Y{j};
+    %      start=1+floor((j-1)*n/k);
+%             xVal=xTr(:,start:start+floor(n/k)-1);
+%             yVal=yTr(1,start:start+floor(n/k)-1);
+%             xTrain=xTr;
+%             yTrain=yTr;
+%             xTrain(:,start:start+floor(n/k)-1)=[];
+%             yTrain(:,start:start+floor(n/k)-1)=[];
     
     for ii=1:Cs_length
         for jj=1:paras_length
@@ -64,9 +68,9 @@ end
 % YOUR CODE
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
-%     a=length(BestCii);
-    bestC=Cs(BestCii(1));
-    bestP=paras(BestPjj(1));
+    a=length(BestCii);
+    bestC=Cs(BestCii(a));
+    bestP=paras(BestPjj(a));
 %     bestC=Cs(BestCii(unidrnd(length(BestCii))));
 %     bestP=paras(BestPjj(unidrnd(length(BestPjj))));
 
