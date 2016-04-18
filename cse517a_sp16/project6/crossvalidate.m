@@ -32,7 +32,7 @@ function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras)
 Cs_length = length(Cs);
 paras_length = length(paras);
 allvalerrs=zeros(Cs_length,paras_length);
-k=9;
+k=10;
 
 
 %% Split off validation data set
@@ -64,9 +64,9 @@ end
 % YOUR CODE
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
-    a=length(BestCii);
-    bestC=Cs(BestCii(a));
-    bestP=paras(BestPjj(a));
+%     a=length(BestCii);
+    bestC=Cs(BestCii(1));
+    bestP=paras(BestPjj(1));
 %     bestC=Cs(BestCii(unidrnd(length(BestCii))));
 %     bestP=paras(BestPjj(unidrnd(length(BestPjj))));
 
