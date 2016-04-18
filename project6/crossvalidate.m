@@ -32,7 +32,7 @@ function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras)
 Cs_length = length(Cs);
 paras_length = length(paras);
 allvalerrs=zeros(Cs_length,paras_length);
-k=7;
+k=5;
 
 
 %% Split off validation data set
@@ -46,12 +46,12 @@ indices=crossvalind('Kfold',length(yTr),k);
 % xVal=X{k};
 % yVal=Y{k};
 
-% xVal=xTr(:,indices==k-1);
-% yVal=yTr(:,indices==k-1);
+ xVal=xTr(:,indices==k-1);
+ yVal=yTr(:,indices==k-1);
  
-for j=1:k 
-       xVal=xTr(:,indices~=j);
-       yVal=yTr(:,indices~=j);
+for j=1:k-1 
+       %xVal=xTr(:,indices~=j);
+       %yVal=yTr(:,indices~=j);
       xTrain=xTr(:,indices==j);
       yTrain=yTr(:,indices==j);
 %     xTrain=X{j};
