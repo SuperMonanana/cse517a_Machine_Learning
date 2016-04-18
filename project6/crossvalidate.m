@@ -47,7 +47,7 @@ indices=crossvalind('Kfold',length(yTr),k);
 % yVal=Y{k};
   %xVal=xTr(:,indices==k);
   %yVal=yTr(:,indices==k);
-for j=1:k-1 
+for j=1:k 
       xVal=xTr(:,indices==j);
       yVal=yTr(:,indices==j);
       xTrain=xTr(:,indices~=j);
@@ -65,7 +65,7 @@ for j=1:k-1
     for ii=1:Cs_length
         for jj=1:paras_length
             %[train,test] = crossvalind('LeaveMOut',length(yTr),1);
-            svmclassify=trainsvm(xTrain,yTrain,Cs(ii), ktype, paras(jj));
+            [svmclassify,~,~]=trainsvm(xTrain,yTrain,Cs(ii), ktype, paras(jj));
             err=sum(sign(svmclassify(xVal))~=yVal(:))./length(yVal);
             allvalerrs(ii,jj)=allvalerrs(ii,jj)+err;
         end
@@ -76,11 +76,11 @@ end
 % YOUR CODE
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
-      %a=length(BestCii);
-      bestC=Cs(BestCii(1));
-      bestP=paras(BestPjj(1));
-     %bestC=Cs(BestCii(unidrnd(length(BestCii))));
-     %bestP=paras(BestPjj(unidrnd(length(BestPjj))));
+%       a=length(BestCii);
+%       bestC=Cs(BestCii(a));
+%       bestP=paras(BestPjj(a));
+     bestC=Cs(BestCii(unidrnd(length(BestCii))));
+     bestP=paras(BestPjj(unidrnd(length(BestPjj))));
 
 end
 
