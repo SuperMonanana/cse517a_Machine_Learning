@@ -45,12 +45,12 @@ indices=crossvalind('Kfold',length(xTr),k);
 
 % xVal=X{k};
 % yVal=Y{k};
-  xVal=xTr(:,find(indices==k));
-  yVal=yTr(:,find(indices==k));
-for j=1:k 
+  xVal=xTr(:,indices==k);
+  yVal=yTr(:,indices==k);
+for j=1:k-1 
       
-      xTrain=xTr(:,find(indices==j));
-      yTrain=yTr(:,find(indices==j));
+      xTrain=xTr(:,indices==j);
+      yTrain=yTr(:,indices==j);
 %     xTrain=X{j};
 %     yTrain=Y{j};
     %      start=1+floor((j-1)*n/k);
@@ -74,11 +74,11 @@ end
 % YOUR CODE
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
-%      a=length(BestCii);
-%      bestC=Cs(BestCii(a));
-%      bestP=paras(BestPjj(a));
-     bestC=Cs(BestCii(unidrnd(length(BestCii))));
-     bestP=paras(BestPjj(unidrnd(length(BestPjj))));
+      a=length(BestCii);
+      bestC=Cs(BestCii(a));
+      bestP=paras(BestPjj(a));
+     %bestC=Cs(BestCii(unidrnd(length(BestCii))));
+     %bestP=paras(BestPjj(unidrnd(length(BestPjj))));
 
 end
 
