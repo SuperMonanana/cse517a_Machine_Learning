@@ -32,21 +32,26 @@ function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras)
 Cs_length = length(Cs);
 paras_length = length(paras);
 allvalerrs=zeros(Cs_length,paras_length);
-k=10;
+k=5;
 
 
 %% Split off validation data set
 % YOUR CODE
-
-    X=mat2cell(xTr,d,n/k*ones(1,k));
-    Y=mat2cell(yTr,1,n/k*ones(1,k));
+indices=crossvalind('Kfold',length(xTr),k);
+%     X=mat2cell(xTr,d,n/k*ones(1,k));
+%     Y=mat2cell(yTr,1,n/k*ones(1,k));
 %% Evaluate all parameter settings
 % YOUR CODE
-xVal=X{k};
-yVal=Y{k};
-for j=1:k-1 
-    xTrain=X{j};
-    yTrain=Y{j};
+
+% xVal=X{k};
+% yVal=Y{k};
+for j=1:k 
+      xVal=xTr(:,find(indices==j));
+      yVal=yTr(:,find(indices==j));
+      xTrain=xTr(:,find(indices~=j));
+      yTrain=yTr(:,find(indices~=j));
+%     xTrain=X{j};
+%     yTrain=Y{j};
     %      start=1+floor((j-1)*n/k);
 %             xVal=xTr(:,start:start+floor(n/k)-1);
 %             yVal=yTr(1,start:start+floor(n/k)-1);
@@ -58,7 +63,7 @@ for j=1:k-1
     for ii=1:Cs_length
         for jj=1:paras_length
             svmclassify=trainsvm(xTrain,yTrain,Cs(ii), ktype, paras(jj));
-            err=sum(sign(svmclassify(xVal))~=yVal(:))/length(yVal);
+            err=sum(sign(svmclassify(xVal))~=yVal(:))./length(yVal);
             allvalerrs(ii,jj)=allvalerrs(ii,jj)+err;
         end
      end
