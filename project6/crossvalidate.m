@@ -46,7 +46,7 @@ indices=crossvalind('Kfold',length(yTr),k);
 % xVal=X{k};
 % yVal=Y{k};
  
-for j=1:k-1 
+for j=1:k 
        xVal=xTr(:,indices==j);
        yVal=yTr(:,indices==j);
       xTrain=xTr(:,indices~=j);
