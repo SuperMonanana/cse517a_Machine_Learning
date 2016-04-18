@@ -78,11 +78,11 @@ end
 % YOUR CODE
     bestval =min(allvalerrs(:));
     [BestCii,BestPjj] = find(allvalerrs==bestval);
-        a=length(BestCii);
-        bestC=Cs(BestCii(a));
-        bestP=paras(BestPjj(a));
-     %bestC=Cs(BestCii(unidrnd(length(BestCii))));
-     %bestP=paras(BestPjj(unidrnd(length(BestPjj))));
+        %a=length(BestCii);
+        %bestC=Cs(BestCii(a));
+        %bestP=paras(BestPjj(a));
+     bestC=Cs(BestCii(unidrnd(length(BestCii))));
+     bestP=paras(BestPjj(unidrnd(length(BestPjj))));
 
 end
 
