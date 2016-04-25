@@ -13,4 +13,12 @@ function preds=evalforest(F,xTe)
 %
 
 %% fill in code here
+[d, n] = size(xTe);
+nt = length(F);
+Pred = zeros(nt, n);
+for ii = 1:nt,
+	T = cell2mat(F(ii));
+	Pred(ii, :) = evaltree(T, xTe);
+end
 
+preds = mode(Pred);

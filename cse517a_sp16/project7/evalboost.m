@@ -14,4 +14,7 @@ function preds=evalboost(BDT,xTe)
 
 %% fill in code here
 
+T = BDT{1};
+preds=evaltree(T,xTe);
+
 
