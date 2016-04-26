@@ -28,7 +28,7 @@ end;
 n = size(x, 2);
 weights = ones(1, n) ./ n;
 alpha = zeros(1, nt);
-BDT = zeros(1, 2^maxdepth - 1);
+BDT = zeros(6, 2^maxdepth - 1);
 for i = 1:nt
     T = id3tree(x,y,maxdepth,weights);
     h = evaltree(T,x);
@@ -40,5 +40,5 @@ for i = 1:nt
     BDT = T;
 end
 
-BDT = {BDT, alpha};
+% BDT = {BDT, alpha};
 
