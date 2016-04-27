@@ -13,8 +13,16 @@ function preds=evalboost(BDT,xTe)
 %
 
 %% fill in code here
-
-
-preds=evaltree(BDT,xTe);
+n=size(xTe,2);
+nt=size(BDT,2);
+preds=zeros(1,n);a=0;hi=zeros(1,n);
+for i=1:nt
+    hi=evaltree(BDT{1,i},xTe);
+    alpha=BDT{2,i};
+    preds=preds+hi.*alpha;
+    
+     a=a+alpha;
+end
+preds = round(preds / a );
 
 
