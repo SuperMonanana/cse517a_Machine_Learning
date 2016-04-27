@@ -17,7 +17,6 @@ function BDT=boosttree(x,y,nt,maxdepth)
 
 %% fill in code here
 
-
 if nargin<4,
     maxdepth = 3;
 end;
@@ -26,19 +25,30 @@ if nargin<3,
 end;
 
 n = size(x, 2);
-weights = ones(1, n) ./ n;
-alpha = zeros(1, nt);
-BDT = zeros(6, 2^maxdepth - 1);
+weights = ones(1, n)./ n;
+
+BDT=cell(2,nt);
+%BDT = zeros(6 * nt + 1, 2^maxdepth - 1);
 for i = 1:nt
     T = id3tree(x,y,maxdepth,weights);
+    
     h = evaltree(T,x);
-    err = weights * (y ~= h)';
-    alpha(i) = 0.5 * log((1 -err) / err);
-    weights = weights .* exp(- alpha(i) * ((y == h) * 2 - 1));
-%     weights = weights ./ sum(weights);
-    weights=weights./(2*sqrt(err*(1-err)));
-    BDT = T;
+    err = sum(weights ((y ~= h)));
+    if err>0.5
+        break
+    end
+     alpha= 0.5.*log((1 -err) / err);
+     
+%     BDT=BDT+alpha.*T;
+%     z=1-2*abs(h-y);
+%     weights = ones(1,n)/n;
+%     weights = (weights.*(exp(-alpha *z))) ./ (2*sqrt(err*(1-err)));
+    weights = weights .* exp(- alpha .*h.*y )./(2*sqrt(err*(1-err)));
+     weights = weights ./ sum(weights);
+    
+    BDT{1,i}=T;
+    BDT{2,i}=alpha;
 end
 
-% BDT = {BDT, alpha};
+
 
